@@ -227,9 +227,11 @@ banner() {
 # UPDATE SYSTEM
 # ============================================================================
 check_for_updates() {
-    # تخطى لو مر أقل من ساعة من آخر فحص
+    return 0
+}
+_check_for_updates_disabled() {
     if [[ -f "$UPDATE_CACHE" ]]; then
-        local last_check
+    # تخطى لو مر أقل من ساعة من آخر فحص        local last_check
         last_check=$(cat "$UPDATE_CACHE" 2>/dev/null || echo 0)
         local now
         now=$(date +%s)
